@@ -1,19 +1,19 @@
 import React, { useState, useReducer } from 'react';
 import { initialState, reducer } from '../reducers/reducer';
 
-const AddToDo = () => {
-    const [toDo, addToDo] = useState();
+const AddToDo = (props) => {
+    const [toDo, addToDo] = useState('');
     const [state, dispatch] = useReducer(reducer, initialState);
 
     const handleSubmit = e => {
         e.preventDefault();
+        // console.log(toDo)
         addToDo('');
+        props.addItem(e, toDo);
     }
 
     const handleChange = e => {
-        e.preventDefault();
         addToDo(e.target.value);
-        dispatch({ type: NEW_TO_DO, payload: toDo || state.item })
     }
 
     return (
@@ -22,7 +22,7 @@ const AddToDo = () => {
                 <input 
                     type='text'
                     name='toDo'
-                    placeholder={state.title}
+                    placeholder={state.item}
                     value={toDo}
                     onChange={handleChange}
                 />
