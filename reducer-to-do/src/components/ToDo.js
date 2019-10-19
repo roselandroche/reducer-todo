@@ -11,9 +11,14 @@ const ToDo = (props) => {
             {!state.completed ? (
                 <div>
                     {props.state.map((task, i) => {
-                        return <h1 key={i}>{task.item}</h1>
+                        return (
+                            <>
+                                <h1 key={i}>{task.item}</h1>
+                                <button>X</button>
+                            </>
+                            )
                     })}
-                    <button>X</button>
+                    
                 </div>
             ) : (
                 <div>
