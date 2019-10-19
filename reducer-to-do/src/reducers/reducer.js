@@ -6,6 +6,11 @@ export const initialState = {
 
 export function reducer(state, action) {
     switch(action.type) {
+        case NEW_TO_DO:
+            return { 
+                ...state,
+                toDo: action.payload
+            };
         default:
             return state;
     }
